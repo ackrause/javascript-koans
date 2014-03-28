@@ -39,9 +39,18 @@ describe("About Applying What We Have Learnt", function() {
 
       var productsICanEat = [];
 
-      /* solve using filter() & all() / any() */
+      var hasNoNuts = function(p) { return !p.containsNuts; };
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      var hasNoMushrooms = function(p) {
+        return _(p.ingredients).all(function(x) { return x !== 'mushrooms'; }) 
+      };
+
+      productsICanEat = _(products).chain()
+                                   .filter(hasNoNuts)
+                                   .filter(hasNoMushrooms)
+                                   .value();
+
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
