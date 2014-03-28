@@ -29,13 +29,13 @@ describe("About Functions", function() {
   it("should have lexical scoping", function () {
     var variable = "top-level";
     function parentfunction() {
-        var variable = "local";
+      var variable = "local";
       function childfunction() {
           return variable;
       }
       return childfunction();
     }
-    expect(parentfunction()).toBe(FILL_ME_IN);
+    expect(parentfunction()).toBe("local");
   });
 
   it("should use lexical scoping to synthesise functions", function () {
